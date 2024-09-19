@@ -1,21 +1,41 @@
 import { css } from '../../styled-system/css';
 
-const container = css({
-  bg: 'red.500',
-  _hover: { bg: 'red.700' },
-  _active: { bg: 'red.900' }
-})
-
-
 export default function Home() {
   return (
     <div 
-      className={container}
+      className={styles.container}
     >
-      <div >
-        Hello 🐼!
+      <div className={styles.containerForm}>
+        <div>
+          <h1>
+            Hello 🐼!
+          </h1>
+        </div>
+        <div>
+          <form action="">
+            <div>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+          </form>
+        </div>
       </div>
-      <span>NO</span>
     </div>
   )
+}
+
+const styles = {
+  container: css({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+  }),
+  containerForm: css({
+    border: '1px solid',
+    borderColor: 'gray.500',
+    borderRadius: 'xl',
+    padding: '20px',
+  }),
 }

@@ -1,18 +1,13 @@
 'use client'
-import { Input } from "@/components/ui/Input";
 import { css } from "../../styled-system/css";
-import { ChangeEvent, useEffect, useState } from "react";
-
-interface Product {
-  id: number
-  name: string
-  price: number
-}
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { Product } from "@/types";
+import InputAutocomplete from "@/components/ui/InputAutocomplete";
 
 export default function Home() {
-  const [searchSuggestions, setSearchSearchSuggestions] = useState<Product[]>([])
+  const [searchSuggestions, setSearchSuggestions] = useState<Product[]>([])
   const [products, setProducts] = useState<Product[] | null>(null)
-
+  
   useEffect(() => {
     const suggestions = [
       { id: 1, name: "Iphone", price: 10 },
@@ -24,7 +19,7 @@ export default function Home() {
     setProducts(suggestions)
   }, [])
 
-  const filterSearch = (value: string): Product[] => {    
+  const filterSearch = (value: string): Product[] => {
     if (products === null) {
       return []
     }
@@ -37,11 +32,10 @@ export default function Home() {
   }
 
   const onSuggestion = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value)
-    
-    setSearchSearchSuggestions(filterSearch(event.target.value))
+    setSearchSuggestions(filterSearch(event.target.value))
   }
 
+  
   return (
     <div className={styles.container}>
       <div className={styles.containerForm}>
@@ -49,22 +43,13 @@ export default function Home() {
           <h1>Hello 🐼!</h1>
         </div>
         <div>
-          <form className={styles.form}>
-            <Input
-              onChange={onSuggestion}
-              placeholder="Search"
+          <form onSubmit={(e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault()
+          }}>
+            <InputAutocomplete
+              suggestions={searchSuggestions}
+              onSuggestion={onSuggestion}
             />
-            <div className={styles.autocompleteContainer}>
-              <ul>
-                {
-                  searchSuggestions.map(product => (
-                    <li key={product.id}>
-                      {product.name}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
           </form>
         </div>
       </div>
@@ -87,16 +72,5 @@ const styles = {
     borderRadius: "xl",
     padding: "30px",
   }),
-  form: css({
-    position: 'relative'
-  }),
-  autocompleteContainer: css({
-    width: '100%',
-    marginTop: '5px',
-    padding: '.6rem',
-    position: 'absolute',
-    border: '1px solid #333333FF',
-    borderRadius: 'xl',
-    background: '#141414FF'
-  })
+  
 }

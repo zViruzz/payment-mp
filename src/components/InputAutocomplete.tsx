@@ -46,7 +46,6 @@ export default function InputAutocomplete({ data,  onProductSelect }: Props) {
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log('index', selectedItem)
     // if (selectedItem < searchSuggestions.length) {
     if (e.key === "ArrowUp" && selectedItem > 0) {
       e.preventDefault()

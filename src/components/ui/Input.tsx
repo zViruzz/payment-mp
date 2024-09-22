@@ -2,7 +2,7 @@ import { forwardRef, InputHTMLAttributes } from "react";
 import { css } from "../../../styled-system/css";
 import { SystemStyleObject } from "../../../styled-system/types";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> { 
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   css?: SystemStyleObject;
 }
 
@@ -11,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
-        className={css(style,cssProps)}
+        className={css(style, cssProps)}
         ref={ref}
         {...props}
       />
@@ -24,7 +24,6 @@ const style = css.raw({
   display: "flex",
   height: "2.5rem",
   width: "100%",
-  maxWidth: "20rem",
   borderRadius: ".45rem",
   border: "1px solid",
   borderColor: "#27272a",

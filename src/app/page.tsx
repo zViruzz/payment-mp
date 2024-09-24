@@ -83,6 +83,5 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		minHeight: '100vh',
-		// overflow: 'visible',
 	}),
 }

@@ -1,3 +1,4 @@
+import type { Product } from '@/types'
 import {
 	type ChangeEvent,
 	type KeyboardEvent,
@@ -5,17 +6,21 @@ import {
 	useRef,
 	useState,
 } from 'react'
-import { Input } from './ui/Input'
 import { css } from '../../styled-system/css'
-import type { Product } from '@/types'
+import { Input } from './ui/Input'
 
 interface Props {
 	data: Product[]
 	onProductSelect: (product: Product) => void
 }
 
-export default function InputAutocomplete({ data, onProductSelect }: Props) {
-	const [searchSuggestions, setSearchSuggestions] = useState<Product[]>([])
+export default function InputAutocomplete({
+	data,
+	onProductSelect,
+}: Props) {
+	const [searchSuggestions, setSearchSuggestions] = useState<
+		Product[]
+	>([])
 	const [selectedItem, setSelectedItem] = useState(0)
 	const containerRef = useRef<HTMLDivElement>(null)
 
@@ -95,11 +100,12 @@ export default function InputAutocomplete({ data, onProductSelect }: Props) {
 						{searchSuggestions.slice(0, 5).map((product, index) => (
 							<li key={product.id}>
 								<button
-									type='button'
+									type='submit'
 									onFocus={() => handleFocus(index)}
 									onClick={handleClick}
 									className={css(styles.item, {
-										background: selectedItem === index ? '#222222FF' : '',
+										background:
+											selectedItem === index ? '#222222FF' : '',
 									})}
 								>
 									{product.name}

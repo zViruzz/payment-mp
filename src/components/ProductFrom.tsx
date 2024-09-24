@@ -3,7 +3,7 @@ import InputAutocomplete from '@/components/InputAutocomplete'
 import type { Product } from '@/types'
 import { type FormEvent, useEffect, useState } from 'react'
 import { css } from '../../styled-system/css'
-import CardList from './CardList'
+import CardList from './CardList/CardList'
 import Detail from './Detail'
 
 interface Props {
@@ -52,7 +52,10 @@ export default function ProductFrom({ products }: Props) {
 			</div>
 
 			<div>
-				<InputAutocomplete data={products} onProductSelect={addProduct} />
+				<InputAutocomplete
+					data={products}
+					onProductSelect={addProduct}
+				/>
 			</div>
 
 			<CardList card={card} removeProduct={removeProduct} />
@@ -61,7 +64,7 @@ export default function ProductFrom({ products }: Props) {
 
 			<div>
 				<button
-					type='submit'
+					type='button'
 					className={css(styles.getLink, {
 						scale: buttonSize === 'normal' ? '1' : '0.99',
 					})}
@@ -83,11 +86,10 @@ const styles = {
 		lineHeight: 'none',
 		marginBottom: '13px',
 	}),
-
 	containerForm: css({
 		border: '1px solid',
 		borderColor: 'gray.600',
-		borderRadius: 'xl',
+		rounded: 'xl',
 		padding: '30px',
 		width: '30rem',
 		display: 'flex',

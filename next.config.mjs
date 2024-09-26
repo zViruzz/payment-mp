@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.frandroid.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'bgfnth3nm2pvfksn.public.blob.vercel-storage.com',
+      },
     ],
   }
 };

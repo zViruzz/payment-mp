@@ -1,10 +1,14 @@
 'use client'
+import { paymentAction } from '@/app/actions/paymentAction'
 import InputAutocomplete from '@/components/InputAutocomplete'
 import type { Product } from '@/types'
 import { type FormEvent, useEffect, useState } from 'react'
+import { toast } from 'sonner'
 import { css } from '../../styled-system/css'
 import CardList from './CardList/CardList'
+import CopyUrl from './CopyUrl'
 import Detail from './Detail'
+import CopyIcon from './icons/CopyIcon'
 
 interface Props {
 	products: Product[]
@@ -14,6 +18,7 @@ export default function ProductFrom({ products }: Props) {
 	const [card, setCard] = useState<Product[]>([])
 	const [buttonSize, setButtonSize] = useState('normal')
 	const [totalSum, setTotalSum] = useState(0)
+	const [url, setUrl] = useState('')
 
 	useEffect(() => {
 		let result = 0
@@ -35,9 +40,14 @@ export default function ProductFrom({ products }: Props) {
 		setCard(newCard)
 	}
 
-	const handleClickGetLink = () => {
-		console.log('get link')
-		console.log(process.env.MP_LOCAL)
+	const handleClickGetLink = async () => {
+		const urlToPay = await paymentAction(card)
+		setUrl(urlToPay)
+	}
+
+	const handleClickUrl = () => {
+		navigator.clipboard.writeText(url)
+		toast.success('Link copiado en el portapapeles')
 	}
 
 	return (
@@ -61,6 +71,8 @@ export default function ProductFrom({ products }: Props) {
 			<CardList card={card} removeProduct={removeProduct} />
 
 			<Detail totalSum={totalSum} quantity={card.length} />
+
+			<CopyUrl textUrl={url} onClick={handleClickUrl} />
 
 			<div>
 				<button

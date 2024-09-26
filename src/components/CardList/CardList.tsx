@@ -36,15 +36,21 @@ export default function CardList({ card, removeProduct }: Props) {
 											type='button'
 											onClick={() => removeProduct(index)}
 										>
-											<CloseIcon />
+											<CloseIcon width={28} height={28} />
 										</button>
 									</div>
 								</div>
 
 								<div className={styles.detail}>
-									<p>{`${product.name}`}</p>
 									<p
-										className={css({ fontSize: '1.3rem' })}
+										className={css({
+											fontWeight: 'semibold',
+										})}
+									>{`${product.name}`}</p>
+									<p
+										className={css({
+											fontSize: '1.3rem',
+										})}
 									>{`$ ${product.price}`}</p>
 								</div>
 							</div>
@@ -55,21 +61,3 @@ export default function CardList({ card, removeProduct }: Props) {
 		</>
 	)
 }
-
-// const styles = {
-// 	productItem: css({
-// 		border: '1px solid #ffffff',
-// 		borderRadius: '5px',
-// 		padding: '10px',
-// 		display: 'flex',
-// 		justifyContent: '',
-// 	}),
-// 	productList: css({
-// 		display: 'flex',
-// 		flexDirection: 'column',
-// 		gap: '10px',
-// 	}),
-// 	image: css({
-// 		borderRadius: '9px',
-// 	}),
-// }

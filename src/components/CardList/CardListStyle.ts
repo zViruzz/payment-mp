@@ -2,8 +2,8 @@ import { css } from "../../../styled-system/css";
 
 export const styles = {
   productItem: css({
-    border: '1px solid #ffffff',
-    rounded: '5px',
+    border: '1px solid #535353',
+    rounded: '10px',
     p: '10px',
     display: 'flex',
   }),

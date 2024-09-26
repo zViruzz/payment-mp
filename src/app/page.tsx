@@ -72,17 +72,6 @@ export default function Home() {
 	return (
 		<div className={styles.container}>
 			<ProductFrom products={suggestions} />
-			{/* <div
-				className={css({
-					position: 'absolute',
-					p: '10px 20px',
-					bg: '#3D3D3DFF',
-					rounded: '20px',
-					bottom: '8',
-				})}
-			>
-				Notification!
-			</div> */}
 		</div>
 	)
 }

@@ -8,7 +8,6 @@ import { css } from '../../styled-system/css'
 import CardList from './CardList/CardList'
 import CopyUrl from './CopyUrl'
 import Detail from './Detail'
-import CopyIcon from './icons/CopyIcon'
 
 interface Props {
 	products: Product[]

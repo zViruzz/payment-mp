@@ -17,8 +17,21 @@ export default function CopyUrl({ onClick, textUrl }: Props) {
 				styles.buttonUrl,
 			)}
 		>
-			{textUrl}
-			<CopyIcon width={25} height={25} />
+			<div
+				className={css({
+					textOverflow: 'ellipsis',
+					overflow: 'hidden',
+					whiteSpace: 'nowrap',
+				})}
+			>
+				{textUrl}
+			</div>
+			<CopyIcon
+				className={css({
+					minW: '20px',
+					minH: '20px',
+				})}
+			/>
 		</button>
 	)
 }
@@ -28,9 +41,11 @@ const styles = {
 		border: '1px solid #5E5E5EFF',
 		rounded: '7px',
 		textAlign: 'left',
-		p: '5px 15px',
-		color: 'sky.500',
+		// justifyContent: 'center',
 		alignItems: 'center',
+
+		p: '10px 15px',
+		color: 'sky.500',
 		transition: 'ease-in .1s',
 		_hover: {
 			bg: '#222222FF',

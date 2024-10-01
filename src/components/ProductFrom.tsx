@@ -68,9 +68,7 @@ export default function ProductFrom({ products }: Props) {
 			</div>
 
 			<CardList card={card} removeProduct={removeProduct} />
-
 			<Detail totalSum={totalSum} quantity={card.length} />
-
 			<CopyUrl textUrl={url} onClick={handleClickUrl} />
 
 			<div>

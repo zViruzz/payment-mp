@@ -36,7 +36,7 @@ export default function CardList({ card, removeProduct }: Props) {
 											type='button'
 											onClick={() => removeProduct(index)}
 										>
-											<CloseIcon width={28} height={28} />
+											<CloseIcon width={23} height={23} />
 										</button>
 									</div>
 								</div>

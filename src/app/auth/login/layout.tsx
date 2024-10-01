@@ -1,11 +1,10 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { getServerSession } from 'next-auth'
+import { auth } from '@/util/auth'
 import { redirect } from 'next/navigation'
 
 export default async function RootLayout({
 	children,
 }: { children: React.ReactNode }) {
-	const session = await getServerSession(authOptions)
+	const session = await auth()
 
 	if (session !== null) {
 		redirect('/')

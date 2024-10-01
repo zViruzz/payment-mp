@@ -1,13 +1,12 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import ProductFrom from '@/components/ProductFrom'
 import type { Product } from '@/types'
+import { auth } from '@/util/auth'
 import { sql } from '@vercel/postgres'
-import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { css } from '../../styled-system/css'
 
 export default async function Home() {
-	const session = await getServerSession(authOptions)
+	const session = await auth()
 
 	if (session === null) {
 		redirect('/auth/login')

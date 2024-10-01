@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import NextAuth, { type NextAuthOptions } from 'next-auth'
+import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 const authOptions = {
@@ -62,7 +62,7 @@ const authOptions = {
 				return {
 					id: '9',
 					name: 'admin',
-					email: credentials.email,
+					email: credentials.username,
 				}
 			},
 		}),

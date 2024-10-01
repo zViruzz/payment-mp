@@ -11,12 +11,12 @@ export default function loginPage() {
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		const datosFormulario = new FormData(event.currentTarget) // Crea un objeto FormData con los datos del formulario
+		const dataForm = new FormData(event.currentTarget) // Crea un objeto FormData con los datos del formulario
 
 		// Para obtener los datos como un objeto
-		const data: FormData = {
-			email: datosFormulario.get('email') as string,
-			password: datosFormulario.get('password') as string,
+		const data = {
+			email: dataForm.get('email') as string,
+			password: dataForm.get('password') as string,
 		}
 
 		const resultLogin = await signIn('credentials', {
@@ -25,7 +25,9 @@ export default function loginPage() {
 			redirect: false,
 		})
 
-		console.log('resultLogin', resultLogin)
+		if (resultLogin === undefined) {
+			throw Error('signIn undefined')
+		}
 		if (resultLogin.ok !== true) {
 			alert('Error')
 		} else {

@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt'
-import NextAuth from 'next-auth'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
 			// The name to display on the sign in form (e.g. 'Sign in with...')
@@ -23,6 +23,10 @@ export const authOptions = {
 				console.log('🚀 ~ authorize ~ credentials:', credentials)
 				if (credentials?.password === undefined) {
 					return null
+				}
+
+				if (process.env.USER_PASSWORD === undefined) {
+					throw Error('undefined password')
 				}
 
 				const userPassword = await bcrypt.hash(

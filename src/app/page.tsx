@@ -1,8 +1,7 @@
-import ProductFrom from '@/components/ProductFrom'
-import { sql } from '@vercel/postgres'
-
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import ProductFrom from '@/components/ProductFrom'
 import type { Product } from '@/types'
+import { sql } from '@vercel/postgres'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { css } from '../../styled-system/css'
@@ -15,8 +14,6 @@ export default async function Home() {
 	}
 
 	const products = await sql`SELECT * FROM Products;`
-
-	console.log('🚀 ~ Home ~ products:', products)
 	const suggestions = products.rows as Product[]
 
 	return (

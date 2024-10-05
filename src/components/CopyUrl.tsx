@@ -41,7 +41,7 @@ const styles = {
 		border: '1px solid #5E5E5EFF',
 		rounded: '7px',
 		textAlign: 'left',
-		// justifyContent: 'center',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 
 		p: '10px 15px',

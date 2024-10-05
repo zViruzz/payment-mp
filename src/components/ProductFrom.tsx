@@ -46,7 +46,7 @@ export default function ProductFrom({ products }: Props) {
 
 	const handleClickUrl = () => {
 		navigator.clipboard.writeText(url)
-		toast.success('Link copiado en el portapapeles')
+		toast.info('Link copiado en el portapapeles')
 	}
 
 	return (
@@ -96,14 +96,18 @@ const styles = {
 		marginBottom: '13px',
 	}),
 	containerForm: css({
-		border: '1px solid',
-		borderColor: 'gray.600',
+		border: 'none',
 		rounded: 'xl',
 		padding: '30px',
-		width: '30rem',
+		width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '15px',
+		sm: {
+			borderColor: 'gray.600',
+			width: '30rem',
+			border: '1px solid',
+		},
 	}),
 	getLink: css.raw({
 		width: '100%',

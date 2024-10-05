@@ -11,9 +11,8 @@ export default function loginPage() {
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		const dataForm = new FormData(event.currentTarget) // Crea un objeto FormData con los datos del formulario
+		const dataForm = new FormData(event.currentTarget)
 
-		// Para obtener los datos como un objeto
 		const data = {
 			email: dataForm.get('email') as string,
 			password: dataForm.get('password') as string,

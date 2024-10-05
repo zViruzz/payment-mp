@@ -27,7 +27,6 @@ export async function addProductAction(formData: FormData) {
 	)
 
 	if (isExists) {
-		console.log('no')
 		return {
 			status: 'done',
 			error: 'Existing product',

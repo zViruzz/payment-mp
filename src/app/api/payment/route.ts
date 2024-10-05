@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
 	await new Preference(client)
 		.get({ preferenceId: id })
 		.then(async (res) => {
-			console.log('res payment notification', res)
 			return res
 		})
 		.catch((res) => {

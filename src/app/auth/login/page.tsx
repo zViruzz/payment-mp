@@ -1,5 +1,6 @@
 'use client'
 import Button from '@/components/Button'
+import { FormContainer } from '@/components/ui/FormContainmer'
 import { Input } from '@/components/ui/Input'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -35,38 +36,29 @@ export default function loginPage() {
 	}
 
 	return (
-		<div className={styles.containerPage}>
-			<form className={styles.containerLogin} onSubmit={handleSubmit}>
-				<div>
-					<h2>Login</h2>
-				</div>
+		<FormContainer onSubmit={handleSubmit}>
+			<div>
+				<h2>Login</h2>
+			</div>
 
-				<div>
-					<label htmlFor='User'>User</label>
-					<Input type='email' name='email' />
-				</div>
+			<div>
+				<label htmlFor='User'>User</label>
+				<Input type='email' name='email' />
+			</div>
 
-				<div>
-					<label htmlFor='Password'>Password</label>
-					<Input type='password' name='password' />
-				</div>
+			<div>
+				<label htmlFor='Password'>Password</label>
+				<Input type='password' name='password' />
+			</div>
 
-				<div className={styles.containerButton}>
-					<Button type='submit'>Login</Button>
-				</div>
-			</form>
-		</div>
+			<div className={styles.containerButton}>
+				<Button type='submit'>Login</Button>
+			</div>
+		</FormContainer>
 	)
 }
 
 const styles = {
-	containerPage: css({
-		w: '100vw',
-		h: '100vh',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	}),
 	containerLogin: css({
 		border: '1px solid',
 		borderColor: 'gray.600',

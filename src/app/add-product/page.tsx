@@ -14,7 +14,6 @@ export default function page() {
 			const formData = new FormData(event.currentTarget)
 
 			const result = await addProductAction(formData)
-			console.log('🚀 ~ handleSubmit ~ result:', result)
 
 			if (result.error !== null) {
 				toast.error(result.error)

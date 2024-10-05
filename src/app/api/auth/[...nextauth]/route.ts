@@ -20,7 +20,6 @@ const authOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials, req) {
-				console.log('🚀 ~ authorize ~ credentials:', credentials)
 				if (credentials?.password === undefined) {
 					return null
 				}
